@@ -82,9 +82,18 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
-}
+    const table = document.getElementById("grid");
+    if (!colorSelected || colorSelected === "SELECT") return;
 
+    for (let r = 0; r < table.rows.length; r++) {
+        for (let c = 0; c < table.rows[r].cells.length; c++) {
+            const cell = table.rows[r].cells[c];
+            if (!cell.style.backgroundColor) {
+                cell.style.backgroundColor = colorSelected;
+            }
+        }
+    }
+}
 
 // Fill all cells
 function fillAll(){
