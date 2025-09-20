@@ -109,5 +109,10 @@ function fillAll(){
 
 // Clear all cells
 function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    for (let r = 0; r < table.rows.length; r++) {
+        for (let c = 0; c < table.rows[r].cells.length; c++) {
+            table.rows[r].cells[c].style.backgroundColor = ""; // restore initial color
+        }
+    }
 }
