@@ -3,6 +3,15 @@ let numRows = 0;
 let numCols = 0;
 let colorSelected; 
 
+// helper: make a cell clickable
+function cellClick(cell) {
+    cell.onclick = function () {
+        if (colorSelected && colorSelected !== "SELECT") {
+            this.style.backgroundColor = colorSelected;
+        }
+    };
+}
+
 // Add a row
 function addR() {
     const table = document.getElementById("grid");
@@ -15,6 +24,7 @@ function addR() {
     for (let i = 0; i < numCols; i++) {
         const newCell = newRow.insertCell();
         newCell.textContent = ""; 
+        cellClick(newCell);
     }
 
     numRows++;  
@@ -30,6 +40,7 @@ function addC() {
         for (let i = 0; i < table.rows.length; i++) {
             const newCell = table.rows[i].insertCell();
             newCell.textContent = "";
+            cellClick(newCell); 
         }
         numCols++;
     }
@@ -73,6 +84,7 @@ function selectColor(){
 function fillU(){
     alert("Clicked Fill All Uncolored"); // Replace this line with your code.
 }
+
 
 // Fill all cells
 function fillAll(){
