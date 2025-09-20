@@ -37,12 +37,30 @@ function addC() {
 // Remove a row
 function removeR() {
     const table = document.getElementById("grid");
+
+    if (table.rows.length === 0) return;
     table.deleteRow(-1);
+
+    numRows--;
+    if (numRows < 0) numRows = 0; 
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+
+    if (table.rows.length === 0) return;
+
+    const colCount = table.rows[0].cells.length;
+
+    if (colCount === 0) return;
+
+    for (let i = 0; i < table.rows.length; i++) {
+        table.rows[i].deleteCell(colCount - 1);
+    }
+
+    numCols--;
+    if (numCols < 0) numCols = 0;
 }
 
 // Set global variable for selected color
