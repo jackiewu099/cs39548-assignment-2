@@ -22,9 +22,18 @@ function addR() {
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
-}
+    const table = document.getElementById("grid");
 
+    if (numRows === 0) {
+        addR();
+    } else {
+        for (let i = 0; i < table.rows.length; i++) {
+            const newCell = table.rows[i].insertCell();
+            newCell.textContent = "";
+        }
+        numCols++;
+    }
+}
 // Remove a row
 function removeR() {
     alert("Clicked Remove Row"); // Replace this line with your code.
